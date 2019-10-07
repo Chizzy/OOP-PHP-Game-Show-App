@@ -4,9 +4,7 @@ include 'inc/Phrase.php';
 include 'inc/Game.php';
 
 $phrase = new Phrase();
-$game =new Game();
-var_dump($phrase);
-var_dump($game);
+$game =new Game($phrase);
 
 require 'inc/header.php';
 
