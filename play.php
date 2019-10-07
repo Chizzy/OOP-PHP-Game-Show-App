@@ -11,8 +11,11 @@ require 'inc/header.php';
 ?>
 
 <div class="main-container">
-    <div id="banner" class="section">
-        <h2 class="header">Phrase Hunter</h2>
+    <h2 class="header">Phrase Hunter</h2>
+    <div id="phrase" class="section">
+        <ul>
+            <?php echo $phrase->addPhraseToDisplay(); ?>
+        </ul>
     </div>
 </div>
 
