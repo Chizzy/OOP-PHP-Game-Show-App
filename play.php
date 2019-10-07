@@ -17,6 +17,12 @@ require 'inc/header.php';
             <?php echo $phrase->addPhraseToDisplay(); ?>
         </ul>
     </div>
+    <?php echo $game->displayKeyboard(); ?>
+    <div id="scoreboard" class="section">
+        <ol>
+            <?php echo $game->displayScore(); ?>
+        </ol>
+    </div>
 </div>
 
 <?php
