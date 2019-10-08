@@ -70,9 +70,9 @@ class Game
         if (!in_array($letter, $this->phrase->selected)) {
             return "<button name='key' value='$letter'>$letter</button>";
         } elseif ($this->phrase->checkLetter($letter)) {
-            return "<button name='key' value='$letter' class='correct' disabled>$letter</button>";
+            return "<button name='key' value='$letter' class='chosen' disabled>$letter</button>";
         } else {
-            return "<button name='key' value='$letter' class='incorrect' disabled>$letter</button>";
+            return "<button name='key' value='$letter' class='wrong' disabled>$letter</button>";
         }
     }
 }

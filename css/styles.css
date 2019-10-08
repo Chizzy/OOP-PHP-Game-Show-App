@@ -59,12 +59,6 @@ button, input[type=submit] {
   transition: var(--transition);
   cursor: pointer;
 }
-input[type=submit].incorrect {
-  background-color: var(--color-lose);
-}
-input[type=submit].correct {
-  background-color: var(--color-win);
-}
 
 #btn__reset {
 	width: 200px;
@@ -139,14 +133,14 @@ input[type=submit].correct {
 }
 
 .chosen {
-  background: #3a3f58;
+  background: var(--color-win);
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
 }
 
 .wrong {
-  background: #f7a964;
+  background: var(--color-lose);
   color: #FFFFFF;
 }
 
