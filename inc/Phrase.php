@@ -2,8 +2,8 @@
 
 class Phrase
 {
-    private $currentPhrase;
-    private $selected;
+    public $currentPhrase;
+    public $selected;
 
     public function __construct($phrase = null, $selected = [])
     {
@@ -30,5 +30,11 @@ class Phrase
             }
         }
         return $phrase;
+    }
+
+    public function checkLetter($letter)
+    {
+        $phrase = array_unique(str_split(str_replace(' ', '', strtolower($this->currentPhrase))));
+        return in_array($letter, $phrase);
     }
 }

@@ -12,44 +12,46 @@ class Game
 
     public function displayKeyboard()
     {
-        $keyboard = '<form action="play.php" method="POST">
-            <div id="qwerty" class="section">
-                <div class="keyrow">
-                    <button class="key">q</button>
-                    <button class="key">w</button>
-                    <button class="key">e</button>
-                    <button class="key">r</button>
-                    <button class="key" style="background-color: red" disabled>t</button>
-                    <button class="key">y</button>
-                    <button class="key">u</button>
-                    <button class="key">i</button>
-                    <button class="key">o</button>
-                    <button class="key">p</button>
-                </div>
+        $keyboard = '';
+    
+        $keyboard .= '<form action="play.php" method="POST">';
+        $keyboard .= '<div id="qwerty" class="section">';
+        $keyboard .= '<div class="keyrow">';
+        $keyboard .= $this->keyedLetter('q');
+        $keyboard .= $this->keyedLetter('w');
+        $keyboard .= $this->keyedLetter('e');
+        $keyboard .= $this->keyedLetter('r');
+        $keyboard .= $this->keyedLetter('t');
+        $keyboard .= $this->keyedLetter('y');
+        $keyboard .= $this->keyedLetter('u');
+        $keyboard .= $this->keyedLetter('i');
+        $keyboard .= $this->keyedLetter('o');
+        $keyboard .= $this->keyedLetter('p');
+        $keyboard .= '</div>';
 
-                <div class="keyrow">
-                    <button class="key">a</button>
-                    <button class="key">s</button>
-                    <button class="key">d</button>
-                    <button class="key">f</button>
-                    <button class="key">g</button>
-                    <button class="key">h</button>
-                    <button class="key">j</button>
-                    <button class="key">k</button>
-                    <button class="key">l</button>
-                </div>
+        $keyboard .= '<div class="keyrow">';
+        $keyboard .= $this->keyedLetter('a');
+        $keyboard .= $this->keyedLetter('s');
+        $keyboard .= $this->keyedLetter('d');
+        $keyboard .= $this->keyedLetter('f');
+        $keyboard .= $this->keyedLetter('g');
+        $keyboard .= $this->keyedLetter('h');
+        $keyboard .= $this->keyedLetter('j');
+        $keyboard .= $this->keyedLetter('k');
+        $keyboard .= $this->keyedLetter('l');
+        $keyboard .= '</div>';
 
-                <div class="keyrow">
-                    <button class="key">z</button>
-                    <button class="key">x</button>
-                    <button class="key">c</button>
-                    <button class="key">v</button>
-                    <button class="key">b</button>
-                    <button class="key">n</button>
-                    <button class="key">m</button>
-                </div>
-            </div>
-        </form>';
+        $keyboard .= '<div class="keyrow">';
+        $keyboard .= $this->keyedLetter('z');
+        $keyboard .= $this->keyedLetter('x');
+        $keyboard .= $this->keyedLetter('c');
+        $keyboard .= $this->keyedLetter('v');
+        $keyboard .= $this->keyedLetter('b');
+        $keyboard .= $this->keyedLetter('n');
+        $keyboard .= $this->keyedLetter('m');
+        $keyboard .= '</div>';
+        $keyboard .= '</div>';
+        $keyboard .= '</form>';
 
         return $keyboard;
     }
@@ -61,5 +63,16 @@ class Game
             $score .= '<li class="tries"><img src="images/liveHeart.png" height="35px" width="30px"></li>';
         }
         return $score;
+    }
+
+    public function keyedLetter($letter)
+    {
+        if (!in_array($letter, $this->phrase->selected)) {
+            return "<button name='key' value='$letter'>$letter</button>";
+        } elseif ($this->phrase->checkLetter($letter)) {
+            return "<button name='key' value='$letter' class='correct' disabled>$letter</button>";
+        } else {
+            return "<button name='key' value='$letter' class='incorrect' disabled>$letter</button>";
+        }
     }
 }
