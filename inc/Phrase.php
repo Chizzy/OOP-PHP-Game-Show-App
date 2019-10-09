@@ -21,7 +21,9 @@ class Phrase
         $characters = str_split(strtolower($this->currentPhrase));
         $phrase = '';
         foreach ($characters as $character) {
-            if (ctype_space($character)) {
+            if (in_array($character, $this->selected)) {
+                $phrase .= "<li class='show'>$character</li>";
+            } elseif (ctype_space($character)) {
                 $phrase .= "<li class='space'>$character</li>";
             } elseif (!ctype_alpha($character)) {
                 $phrase .= "<li class='hide'>$character</li>";
