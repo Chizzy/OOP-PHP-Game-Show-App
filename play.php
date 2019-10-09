@@ -19,6 +19,19 @@ var_dump($game);
 require 'inc/header.php';
 
 ?>
+<style>
+    .correct {
+    background: var(--color-win);
+    border-radius: 5px;
+    font-size: var(--font-size-medium);
+    color: #FFFFFF;
+    }
+
+    .incorrect {
+    background: var(--color-lose);
+    color: #FFFFFF;
+    }
+</style>
 
 <div class="main-container">
     <h2 class="header">Phrase Hunter</h2>
