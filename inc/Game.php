@@ -101,9 +101,15 @@ class Game
     public function gameOver()
     {
         if ($this->checkForLose() == true) {
-            return '<h1 id="lose">The phrase was: "' . $this->phrase->currentPhrase . '". Better luck next time!</h1>';
+            return '<h1 id="overlay">The phrase was: "' . $this->phrase->currentPhrase . '". Better luck next time!</h1>
+            <form action="play.php" method="POST">
+            <input id="btn__reset" type="submit" name="start" value="Start Game" />
+            </form>';
         } elseif ($this->checkForWin() == true) {
-            return '<h1 id="win">Congratulations on guessing: "' . $this->phrase->currentPhrase . '"</h1>';
+            return '<h1 id="overlay">Congratulations on guessing: "' . $this->phrase->currentPhrase . '"</h1>
+            <form action="play.php" method="POST">
+            <input id="btn__reset" type="submit" name="start" value="Start Game" />
+            </form>';
         } else {
             return false;
         }

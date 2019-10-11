@@ -18,11 +18,7 @@ include 'inc/Game.php';
 
 $phrase = new Phrase($_SESSION['phrase'], $_SESSION['selected']);
 $_SESSION['phrase'] = $phrase->currentPhrase;
-echo $phrase->numberLost();
 $game = new Game($phrase);
-// var_dump($game->checkForLose());
-var_dump($game->checkForWin());
-//var_dump($game);
 
 require 'inc/header.php';
 
@@ -38,28 +34,19 @@ require 'inc/header.php';
     background: var(--color-lose);
     color: #FFFFFF;
     }
-    #lose {
-        margin-top: -30rem;
-        color: white;
-    }
-    #win {
-        margin-top: -30rem;
-        color: white;
-    }
 </style>
 
 <div class="main-container">
+<h2 class="header">Phrase Hunter</h2>
 <?php if ($game->checkForLose() == true){ ?>
     <style>
         body {
             background: #f5785f;
         }
         .header {
-            margin-top: -4rem;
             color: white;
         }
     </style>
-    <h2 class="header">Phrase Hunter</h2>
     <?php echo $game->gameOver();
     } else if ($game->checkForWin() == true) { ?>
         <style>
@@ -67,14 +54,11 @@ require 'inc/header.php';
                 background: #78CF82;
             }
             .header {
-                margin-top: -4rem;
                 color: white;
             }
         </style>
-    <h2 class="header">Phrase Hunter</h2>
     <?php echo $game->gameOver();
-     } else { ?>
-    <h2 class="header">Phrase Hunter</h2>
+    } else { ?>
     <div id="phrase" class="section">
         <ul>
             <?php echo $phrase->addPhraseToDisplay(); ?>
