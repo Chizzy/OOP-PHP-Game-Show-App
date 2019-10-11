@@ -3,7 +3,7 @@
 class Phrase
 {
     public $currentPhrase;
-    public $selected;
+    public $selected =[];
     public $phrases = [
         'Boldness be my friend',
         'Leave no stone unturned',
@@ -13,15 +13,16 @@ class Phrase
         'Love without limits'
     ];
 
-    public function __construct($phrase = null, $selected = [])
+    public function __construct($phrase = null, $selected = null)
     {
-        if (!empty($phrase) || !empty($selected)) {
+        if (!empty($phrase)) {
             $this->currentPhrase = $phrase;
-            $this->selected = $selected;
-        }
-        if (!isset($phrase)) {
+        } else {
             $randIndex = array_rand($this->phrases);
             $this->currentPhrase = $this->phrases[$randIndex];
+        }
+        if (!empty($selected)) {
+            $this->selected = $selected;
         }
     }
 

@@ -3,6 +3,11 @@
 require 'inc/header.php';
 
 ?>
+<style>
+	form {
+		margin-top: -25rem;
+	}
+</style>
 
 <div class="main-container">
 	<h2 class="header">Phrase Hunter</h2>
@@ -14,3 +19,5 @@ require 'inc/header.php';
 <?php
 
 require 'inc/footer.php';
+
+?>

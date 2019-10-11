@@ -68,7 +68,7 @@ button, input[type=submit] {
 .main-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 100%;
   max-height: 900px;
   text-align: center;

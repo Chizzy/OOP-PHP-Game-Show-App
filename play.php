@@ -16,8 +16,12 @@ if (isset($_SESSION['selected']) && isset($_POST['key'])) {
 include 'inc/Phrase.php';
 include 'inc/Game.php';
 
-$phrase = new Phrase($_SESSION['phrase'], $_SESSION['selected']);
-$_SESSION['phrase'] = $phrase->currentPhrase;
+if (isset($_SESSION['phrase'])) {
+	$phrase = new Phrase($_SESSION['phrase'], $_SESSION['selected']);
+} else {
+	$phrase = new Phrase();
+	$_SESSION['phrase'] = $phrase->currentPhrase;
+}
 $game = new Game($phrase);
 
 require 'inc/header.php';
@@ -36,7 +40,7 @@ require 'inc/header.php';
     }
 </style>
 
-<div class="main-container">
+<div class="main-container" id="overlay">
 <h2 class="header">Phrase Hunter</h2>
 <?php if ($game->checkForLose() == true){ ?>
     <style>
