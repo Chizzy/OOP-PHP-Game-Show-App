@@ -177,16 +177,8 @@ button, input[type=submit] {
   color: #fff;
 }
 
-.win {
-  background-color: var(--color-win);
-}
-
 .win a {
   color: var(--color-win);
-}
-
-.lose {
-  background-color: #f5785f;
 }
 
 .lose a {

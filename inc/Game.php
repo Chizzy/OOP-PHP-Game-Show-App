@@ -78,4 +78,34 @@ class Game
             return "<button name='key' value='$letter' class='incorrect' disabled>$letter</button>";
         }
     }
+
+    public function checkForLose()
+    {
+        if ($this->lives <= $this->phrase->numberLost()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function checkForWin()
+    {
+        $inBothArrays = count(array_intersect($this->phrase->selected, $this->phrase->getLetterArray()));
+        if ($inBothArrays == count($this->phrase->getLetterArray())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function gameOver()
+    {
+        if ($this->checkForLose() == true) {
+            return '<h1 id="lose">The phrase was: "' . $this->phrase->currentPhrase . '". Better luck next time!</h1>';
+        } elseif ($this->checkForWin() == true) {
+            return '<h1 id="win">Congratulations on guessing: "' . $this->phrase->currentPhrase . '"</h1>';
+        } else {
+            return false;
+        }
+    }
 }
