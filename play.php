@@ -1,20 +1,26 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['selected'])) {
+
+if (isset($_POST['start'])) {
+    unset($_SESSION['selected']);
+    unset($_SESSION['phrase']);
+}
+
+if (isset($_SESSION['selected']) && isset($_POST['key'])) {
+    $_SESSION['selected'][] = $_POST['key'];
+} else {
     $_SESSION['selected'] = [];
 }
-if (isset($_POST['key'])) {
-    $_SESSION['selected'][] = $_POST['key'];
-}
-$_SESSION['phrase'] = 'start small';
 
 include 'inc/Phrase.php';
 include 'inc/Game.php';
 
 $phrase = new Phrase($_SESSION['phrase'], $_SESSION['selected']);
-$game =new Game($phrase);
-var_dump($game);
+$_SESSION['phrase'] = $phrase->currentPhrase;
+echo $phrase->numberLost();
+$game = new Game($phrase);
+//var_dump($game);
 
 require 'inc/header.php';
 

@@ -4,6 +4,14 @@ class Phrase
 {
     public $currentPhrase;
     public $selected;
+    public $phrases = [
+        'Boldness be my friend',
+        'Leave no stone unturned',
+        'Broken crayons still color',
+        'The adventure begins',
+        'Dream without fear',
+        'Love without limits'
+    ];
 
     public function __construct($phrase = null, $selected = [])
     {
@@ -12,7 +20,8 @@ class Phrase
             $this->selected = $selected;
         }
         if (!isset($phrase)) {
-            $this->currentPhrase = 'dream big';
+            $randIndex = array_rand($this->phrases);
+            $this->currentPhrase = $this->phrases[$randIndex];
         }
     }
 
@@ -34,9 +43,20 @@ class Phrase
         return $phrase;
     }
 
+    public function getLetterArray()
+    {
+        return array_unique(str_split(str_replace(' ', '', strtolower($this->currentPhrase))));
+    }
+
     public function checkLetter($letter)
     {
-        $phrase = array_unique(str_split(str_replace(' ', '', strtolower($this->currentPhrase))));
-        return in_array($letter, $phrase);
+        
+        return in_array($letter, $this->getLetterArray());
+    }
+
+    public function numberLost()
+    {
+        $diff = array_diff($this->selected, $this->getLetterArray());
+        return count($diff);
     }
 }

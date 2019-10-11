@@ -59,7 +59,10 @@ class Game
     public function displayScore()
     {
         $score = '';
-        for ($i = 1; $i <= $this->lives; $i++) {
+        for ($i=1; $i <= $this->phrase->numberLost(); $i++) {
+            $score .= '<li class="tries"><img src="images/lostHeart.png" height="35px" width="30px"></li>';
+        }
+        for ($i = 1; $i <= ($this->lives - $this->phrase->numberLost()); $i++) {
             $score .= '<li class="tries"><img src="images/liveHeart.png" height="35px" width="30px"></li>';
         }
         return $score;
