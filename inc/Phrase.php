@@ -5,12 +5,13 @@ class Phrase
     public $currentPhrase;
     public $selected =[];
     public $phrases = [
-        'Boldness be my friend',
-        'Leave no stone unturned',
-        'Broken crayons still color',
-        'The adventure begins',
-        'Dream without fear',
-        'Love without limits'
+        'Did I do that',
+        'Live long and prosper',
+        'Lucy you got some explaining to do',
+        'What you talkin bout Willis',
+        'You got it dude',
+        'Thats what she said',
+        'No soup for you'
     ];
 
     public function __construct($phrase = null, $selected = null)
