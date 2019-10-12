@@ -13,7 +13,7 @@ If the player completes the phrase before they run out of guesses, a winning scr
 
 A player can guess a letter only once. After they’ve guessed a letter, the game will disable that letter on the onscreen keyboard.
 
-## Used popular tv catchphrases
+**Used popular tv catchphrases**
 
 ### CSS
 
