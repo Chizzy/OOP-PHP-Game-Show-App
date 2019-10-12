@@ -40,6 +40,16 @@ require 'inc/header.php';
     }
 </style>
 
+<script>
+    document.addEventListener("keydown", event => {
+        if (event.keyCode >= 65 && event.keyCode <= 90) {
+            let letter = String.fromCharCode(event.keyCode);
+            letter = letter.toLowerCase();
+            document.getElementById(letter).click();
+        }
+    })
+</script>
+
 <div class="main-container" id="overlay">
 <h2 class="header">Phrase Hunter</h2>
 <?php if ($game->checkForLose() == true){ ?>

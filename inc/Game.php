@@ -71,7 +71,7 @@ class Game
     public function keyedLetter($letter)
     {
         if (!in_array($letter, $this->phrase->selected)) {
-            return "<button name='key' value='$letter'>$letter</button>";
+            return "<button id='$letter' name='key' value='$letter'>$letter</button>";
         } elseif ($this->phrase->checkLetter($letter)) {
             return "<button name='key' value='$letter' class='correct' disabled>$letter</button>";
         } else {
